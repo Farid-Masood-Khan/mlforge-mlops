@@ -1,0 +1,89 @@
+{
+  "data_sha256": "5de3ddc9f589b369e71eae2a4dbcb5a96615910b1093c326f0ea57e3f9870571",
+  "best_candidate_run_id": "5ec7b95c4482450bb750bbf065513c44",
+  "assigned_alias": "challenger",
+  "promotion_message": "Version 2 assigned to 'challenger'. PR-AUC 0.4757 did not beat champion v1 (0.4757 + 0.002).",
+  "runs": [
+    {
+      "run_id": "4bc572858b2048b6b00cb22f1bf19237",
+      "name": "baseline-logistic-regression",
+      "val_pr_auc": 0.4973,
+      "holdout_pr_auc": 0.4945,
+      "holdout_roc_auc": 0.6705,
+      "holdout_f1": 0.5547,
+      "threshold": 0.28
+    },
+    {
+      "run_id": "0d7a5d713e4a4ee1a3fd283911da3d0e",
+      "name": "hgb-lr0.05-leaf15-min20",
+      "val_pr_auc": 0.492,
+      "holdout_pr_auc": 0.4835,
+      "holdout_roc_auc": 0.657,
+      "holdout_f1": 0.5668,
+      "threshold": 0.28
+    },
+    {
+      "run_id": "cc4bd279e79440eebffc555c1eb4e21b",
+      "name": "hgb-lr0.05-leaf15-min40",
+      "val_pr_auc": 0.5002,
+      "holdout_pr_auc": 0.4931,
+      "holdout_roc_auc": 0.6603,
+      "holdout_f1": 0.5654,
+      "threshold": 0.31
+    },
+    {
+      "run_id": "bdca87c6214442e59f35377b4c86ae9c",
+      "name": "hgb-lr0.05-leaf31-min20",
+      "val_pr_auc": 0.4839,
+      "holdout_pr_auc": 0.4782,
+      "holdout_roc_auc": 0.6528,
+      "holdout_f1": 0.5618,
+      "threshold": 0.29
+    },
+    {
+      "run_id": "5ec7b95c4482450bb750bbf065513c44",
+      "name": "hgb-lr0.05-leaf31-min40",
+      "val_pr_auc": 0.5025,
+      "holdout_pr_auc": 0.4757,
+      "holdout_roc_auc": 0.6555,
+      "holdout_f1": 0.5671,
+      "threshold": 0.29
+    },
+    {
+      "run_id": "745160522b334acc8dee145bba98ab2d",
+      "name": "hgb-lr0.1-leaf15-min20",
+      "val_pr_auc": 0.4785,
+      "holdout_pr_auc": 0.4752,
+      "holdout_roc_auc": 0.6503,
+      "holdout_f1": 0.5643,
+      "threshold": 0.3
+    },
+    {
+      "run_id": "0a7b18a8ca244c798ae0921bf790f11b",
+      "name": "hgb-lr0.1-leaf15-min40",
+      "val_pr_auc": 0.4871,
+      "holdout_pr_auc": 0.4664,
+      "holdout_roc_auc": 0.6499,
+      "holdout_f1": 0.5544,
+      "threshold": 0.31
+    },
+    {
+      "run_id": "34fc1a1683a04d8a93e945aabd45f513",
+      "name": "hgb-lr0.1-leaf31-min20",
+      "val_pr_auc": 0.4844,
+      "holdout_pr_auc": 0.4676,
+      "holdout_roc_auc": 0.6425,
+      "holdout_f1": 0.5415,
+      "threshold": 0.33
+    },
+    {
+      "run_id": "313f3246c0c340368ae3f1b8ba4f6531",
+      "name": "hgb-lr0.1-leaf31-min40",
+      "val_pr_auc": 0.4931,
+      "holdout_pr_auc": 0.4772,
+      "holdout_roc_auc": 0.6518,
+      "holdout_f1": 0.541,
+      "threshold": 0.32
+    }
+  ]
+}
