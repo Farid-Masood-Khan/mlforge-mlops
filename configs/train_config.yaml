@@ -1,0 +1,65 @@
+# MLForge Training & Pipeline Configuration
+# No magic numbers in code — all pipeline parameters are configured here.
+
+project:
+  name: mlforge-churn
+  experiment_name: mlforge-churn
+  seed: 42
+  pipeline_version: "1.0.0"
+
+data:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  reference_dir: "data/reference"
+  raw_filename: "telco_churn.csv"
+  source_url: "https://raw.githubusercontent.com/IBM/telco-customer-churn-eda-and-risk-analysis/master/Telco-Customer-Churn.csv"
+  target_column: "churn"
+  id_column: "customerID"
+  split:
+    train_ratio: 0.70
+    val_ratio: 0.15
+    test_ratio: 0.15
+  validation:
+    max_missing_feature_pct: 0.05
+    max_raw_blank_total_charges_pct: 0.02
+    min_tenure_months: 0
+    max_tenure_months: 72
+    min_monthly_charges: 18.0
+    max_monthly_charges: 120.0
+
+model:
+  baseline:
+    type: "logistic_regression"
+    params:
+      max_iter: 1000
+      C: 1.0
+      solver: "lbfgs"
+  
+  champion_candidate:
+    type: "hist_gradient_boosting"
+    params:
+      max_iter: 100
+      learning_rate: 0.1
+      max_leaf_nodes: 31
+      min_samples_leaf: 20
+
+  grid_search:
+    enabled: true
+    models:
+      - type: "hist_gradient_boosting"
+        param_grid:
+          learning_rate: [0.05, 0.1]
+          max_leaf_nodes: [15, 31]
+          min_samples_leaf: [20, 40]
+
+promotion:
+  # Candidate must beat champion PR-AUC by at least this margin to auto-promote
+  pr_auc_delta_threshold: 0.002
+  primary_metric: "pr_auc"
+
+drift:
+  thresholds:
+    pass_below: 0.10
+    fail_above: 0.20
+  score_psi_threshold: 0.15
+
