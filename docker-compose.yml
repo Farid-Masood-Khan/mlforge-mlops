@@ -1,0 +1,48 @@
+services:
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.14.0
+    container_name: mlforge-mlflow
+    ports:
+      - "5000:5000"
+    volumes:
+      - mlartifacts:/mlflow/mlartifacts
+      - ./mlflow.db:/mlflow/mlflow.db
+    command: >
+      mlflow server
+      --backend-store-uri sqlite:////mlflow/mlflow.db
+      --default-artifact-root /mlflow/mlartifacts
+      --host 0.0.0.0
+      --port 5000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: mlforge-api
+    ports:
+      - "8000:8000"
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+      - MLFLOW_EXPERIMENT_NAME=mlforge-churn
+      - MLFORGE_API_KEY=mlforge-dev-secret-key-change-in-prod
+      - MODEL_ALIAS=champion
+      - MODEL_NAME=mlforge-churn
+    depends_on:
+      mlflow:
+        condition: service_started
+    volumes:
+      - ./logs:/app/logs
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  mlartifacts:
+
