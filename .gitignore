@@ -1,0 +1,65 @@
+# Environment variables
+.env
+*.env
+
+# Python / Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+.venv/
+env/
+venv/
+ENV/
+
+# Testing and Type Checking
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# MLflow and Experiment Tracking
+mlruns/
+mlartifacts/
+*.db
+mlflow.db
+
+# Logs
+logs/
+*.log
+*.jsonl
+
+# Data (Never commit raw or bulky processed data files)
+data/raw/*.csv
+data/raw/*.zip
+data/raw/*.tar.gz
+data/processed/*.csv
+data/processed/*.parquet
+!data/raw/DATA_SOURCES.md
+!data/raw/DATA_CARD.md
+!data/processed/.gitkeep
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+

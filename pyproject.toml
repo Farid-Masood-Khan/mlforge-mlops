@@ -1,0 +1,80 @@
+[project]
+name = "mlforge"
+version = "0.1.0"
+description = "Production-style end-to-end MLOps pipeline for customer churn"
+readme = "docs/README.md"
+requires-python = ">=3.11"
+authors = [
+    { name = "Farid Masood" }
+]
+dependencies = [
+    "pandas>=2.2.0",
+    "numpy>=1.26.0",
+    "scikit-learn>=1.4.0",
+    "pandera>=0.18.0",
+    "sqlalchemy>=2.0.0,<2.1.0",
+    "mlflow>=2.11.0",
+    "fastapi>=0.110.0",
+    "uvicorn>=0.28.0",
+    "pydantic>=2.6.0",
+    "pydantic-settings>=2.2.0",
+    "pyyaml>=6.0.1",
+    "requests>=2.31.0",
+    "httpx>=0.27.0",
+    "streamlit>=1.32.0",
+    "scipy>=1.12.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+    "mypy>=1.9.0",
+    "ruff>=0.3.0",
+    "types-PyYAML>=6.0.12.20240311",
+    "types-requests>=2.31.0.20240311"
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E501", # line too long (handled by formatter)
+    "B008", # do not perform function calls in argument defaults (standard FastAPI Depends idiom)
+]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "src.serving.*"
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --strict-markers"
+markers = [
+    "smoke: fast smoke tests",
+    "slow: tests that execute training runs",
+    "api: FastAPI endpoint tests"
+]
+
