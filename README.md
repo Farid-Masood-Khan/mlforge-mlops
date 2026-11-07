@@ -1,6 +1,7 @@
 # MLForge — End-to-End MLOps Pipeline & Production System
 
 [![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Code Style: Ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 [![Type Checked: Mypy](https://img.shields.io/badge/type%20checked-mypy-blue.svg)](https://github.com/python/mypy)
 [![Tests: Pytest](https://img.shields.io/badge/tests-26%2F26%20passing-brightgreen.svg)](https://docs.pytest.org/)
@@ -9,7 +10,9 @@
 
 A production-grade machine learning system that takes a tabular customer churn classification model all the way from raw data ingestion to a versioned, monitored, containerised API — with every single run reproducible end to end.
 
-> **Core Engineering Principle:** Notebooks prove you can fit a model. MLForge proves you can *ship* one — validate data at entry, track experiment lineage, register models, serve via a typed API, enforce CI gates, and monitor for distribution drift in production.
+> **Core Engineering Principle:** Notebooks prove you can fit a model. MLForge proves you can *ship* one — validate data at entry, track experiment lineage, register models, serve via a typed API, enforce CI gates, and monitor for distribution drift in production.  
+> 
+> 💡 **Domain Baseline**: This MLOps pipeline represents the continuous delivery evolution of our supervised baseline project, **[Customer-Churn-Prediction](https://github.com/Farid-Masood-Khan/Customer-Churn-Prediction)**.
 
 ---
 
